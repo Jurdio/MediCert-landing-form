@@ -3,14 +3,14 @@ require('dotenv').config();
 
 const connectDB = async () => {
   try {
-    await mongoose.connect(process.env.MONGO_URI, {
+    await mongoose.connect(process.env.MONGO_URI + '?retryWrites=true&w=majority&appName=GoogleScraperSCOUT', {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
     console.log('MongoDB database connection established successfully');
   } catch (error) {
     console.error('MongoDB connection error:', error);
-    process.exit(1);
+    // process.exit(1);
   }
 };
 
