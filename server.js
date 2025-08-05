@@ -7,6 +7,7 @@ const connectDB = require('./src/config/db');
 const formRoutes = require('./src/routes/form.routes');
 const corsOptions = require('./src/utils/cors');
 const swaggerSpec = require('./src/config/swagger');
+const demoRoute = require('./routes/demo.route');
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -22,6 +23,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // API routes
 app.use('/api', formRoutes);
+app.use('/demo', demoRoute);
 
 app.use((req, res) => {
     res.status(404).json({ message: "Not Found" });
