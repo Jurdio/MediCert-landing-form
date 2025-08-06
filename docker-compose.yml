@@ -3,7 +3,7 @@ services:
   app:
     build: .
     ports:
-      - "${PORT:-3000}:3000"
+      - "${PORT}:${PORT}"
     environment:
       - MONGO_URI=${MONGO_URI}
       - ALLOWED_ORIGINS=${ALLOWED_ORIGINS}
