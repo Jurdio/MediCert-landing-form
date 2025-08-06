@@ -7,12 +7,11 @@ const connectDB = require('./src/config/db');
 const formRoutes = require('./src/routes/form.routes');
 const corsOptions = require('./src/utils/cors');
 const swaggerSpec = require('./src/config/swagger');
-const demoRoute = require('./routes/demo.route');
 
 const app = express();
 const port = process.env.PORT || 3000;
 
-// connectDB();
+connectDB();
 
 // Swagger UI
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
