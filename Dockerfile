@@ -1,20 +1,18 @@
-# Використовуємо базовий образ Node.js
-FROM node:16
+# --- Base image ---
+FROM node:18-alpine
 
-# Створюємо робочу директорію всередині контейнера
+# --- Set working directory ---
 WORKDIR /app
 
-# Копіюємо файли package.json і package-lock.json
+# --- Copy package files and install dependencies ---
 COPY package*.json ./
+RUN npm install --production
 
-# Встановлюємо залежності
-RUN npm install
-
-# Копіюємо весь код в контейнер
+# --- Copy source code ---
 COPY . .
 
-# Відкриваємо порт, який використовує ваш додаток
-EXPOSE 3000
+# --- Expose port (default 5000, can be overridden by ENV) ---
+EXPOSE 5000
 
-# Запускаємо додаток
+# --- Start the app ---
 CMD ["npm", "start"]
