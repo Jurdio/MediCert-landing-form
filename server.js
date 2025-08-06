@@ -22,7 +22,6 @@ app.use(express.urlencoded({ extended: true }));
 
 // API routes
 app.use('/api', formRoutes);
-app.use('/demo', demoRoute);
 
 app.use((req, res) => {
     res.status(404).json({ message: "Not Found" });
