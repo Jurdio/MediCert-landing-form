@@ -14,7 +14,7 @@ const formSchema = new mongoose.Schema({
   },
   message: {
     type: String,
-    required: true,
+    required: false,
     trim: true,
   },
 }, { timestamps: true });

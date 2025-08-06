@@ -33,14 +33,9 @@ const router = express.Router();
  *                 format: email
  *                 example: john.doe@example.com
  *                 maxLength: 100
- *               message:
- *                 type: string
- *                 example: This is a test message.
- *                 maxLength: 1000
  *             required:
  *               - name
  *               - email
- *               - message
  *     responses:
  *       201:
  *         description: Form data saved successfully
@@ -74,10 +69,10 @@ router.post(
       .isLength({ max: 50 }).withMessage('Name must be less than 50 characters'),
     body('email')
       .isEmail().withMessage('Please provide a valid email')
-      .isLength({ max: 100 }).withMessage('Email must be less than 100 characters'),
+      .isLength({ max: 50 }).withMessage('Email must be less than 100 characters'),
     body('message')
-      .notEmpty().withMessage('Message is required')
-      .isLength({ max: 1000 }).withMessage('Message must be less than 1000 characters'),
+      .optional()
+      .isLength({ max: 300 }).withMessage('Message must be less than 1000 characters'),
   ],
   formController.submitForm
 );
