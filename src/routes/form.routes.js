@@ -66,13 +66,13 @@ router.post(
   [
     body('name')
       .notEmpty().withMessage('Name is required')
-      .isLength({ max: 150 }).withMessage('Name must be less than 50 characters'),
+      .isLength({ max: 150 }).withMessage('Name must be less than 150 characters'),
     body('email')
       .isEmail().withMessage('Please provide a valid email')
-      .isLength({ max: 254 }).withMessage('Email must be less than 100 characters'),
+      .isLength({ max: 254 }).withMessage('Email must be less than 254 characters'),
     body('message')
       .optional()
-      .isLength({ max: 300 }).withMessage('Message must be less than 1000 characters'),
+      .isLength({ max: 300 }).withMessage('Message must be less than 300 characters'),
   ],
   formController.submitForm
 );
