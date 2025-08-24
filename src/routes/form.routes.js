@@ -27,12 +27,12 @@ const router = express.Router();
  *               name:
  *                 type: string
  *                 example: John Doe
- *                 maxLength: 50
+ *                 maxLength: 254
  *               email:
  *                 type: string
  *                 format: email
  *                 example: john.doe@example.com
- *                 maxLength: 100
+ *                 maxLength: 150
  *             required:
  *               - name
  *               - email
@@ -66,10 +66,10 @@ router.post(
   [
     body('name')
       .notEmpty().withMessage('Name is required')
-      .isLength({ max: 50 }).withMessage('Name must be less than 50 characters'),
+      .isLength({ max: 150 }).withMessage('Name must be less than 50 characters'),
     body('email')
       .isEmail().withMessage('Please provide a valid email')
-      .isLength({ max: 50 }).withMessage('Email must be less than 100 characters'),
+      .isLength({ max: 254 }).withMessage('Email must be less than 100 characters'),
     body('message')
       .optional()
       .isLength({ max: 300 }).withMessage('Message must be less than 1000 characters'),
